@@ -22,9 +22,9 @@ export default class Updater {
         nonce = await this.web3.eth.getTransactionCount(sender);
         for (const event of events) {
             if (event.returnValues.status === '3') {
-                console.log(`Dispensing ${amount.toString()} gas to ${to}`);
                 const txn = await this.web3.eth.getTransactionReceipt(event.transactionHash);
                 const recipient = this.formatAddress(txn.logs[0].topics[2]);
+                console.log(`Dispensing ${amount.toString()} gas to ${recipient}`);
                 await this.sender.send(sender, recipient, amount, nonce);
                 nonce += 1;
             }
