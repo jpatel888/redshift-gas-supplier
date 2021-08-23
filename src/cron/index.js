@@ -14,8 +14,10 @@ export default class Cron {
         const interval = process.env.POLLING_CRON_STRING;
         cron.schedule(interval, async () => {
             if (isUpdating) return;
+            console.log(`Polling for new blocks...`)
             const block = await this.web3.eth.getBlockNumber();
             if (this.lastBlock && block > this.lastBlock) {
+                console.log(`New blocks found. Updating from ${this.lastBlock + 1} to ${block}`);
                 isUpdating = true;
                 await this.updater.update(this.lastBlock + 1, block);
                 isUpdating = false;
