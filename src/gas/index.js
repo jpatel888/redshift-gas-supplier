@@ -1,4 +1,4 @@
-import { UNWRAP_GAS_LIMIT } from "../constants";
+import { GIGA_WEI, UNWRAP_GAS_LIMIT } from "../constants";
 import axios from 'axios';
 import BN from 'bignumber.js';
 
@@ -14,6 +14,7 @@ export default class GasCalculator {
         const gasPrice = await this.fetch();
         if (!gasPrice) throw new Error('Error fetching gas price');
         const total = new BN(gasPrice)
+            .times(new BN(GIGA_WEI))
             .times(new BN(UNWRAP_GAS_LIMIT))
             .times(new BN(process.env.GAS_SCALAR))
             .div(new BN('10'));
