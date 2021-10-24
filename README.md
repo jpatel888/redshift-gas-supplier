@@ -15,13 +15,22 @@ A gas supplier is preferable to a faucet for 2 reasons:
 2. Gas is only dispensed when a bridge event occurs, which requires a few hundreds of times higher than the gas that'll be dispensed.
 
 
-## Running Gas Supplier
+## Running the supplier
 
 1. Install dependencies
-```npm i```
 
-2. Copy the .env
-```cp .env.example .env```
+```shell
+npm i
+```
 
-3. Run the app (you can use supervisor or pm2 or whatever to keep it up)
-```npm run start```
+2. Copy the .env and set chain data
+
+```shell
+cp .env.example .env
+```
+
+3. Run the app
+
+```shell
+npm run start
+```
