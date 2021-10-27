@@ -26,7 +26,7 @@ npm i
 2. Copy the .env and set chain data
 
 ```shell
-cp .env.example .env
+cp .env.ubiq .env
 ```
 
 3. Run the app
